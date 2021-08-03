@@ -21,8 +21,9 @@ object MyModule {
         else {
             n 
         }
-    private def formatAbs(x: Int) = {
+    private def formatAbs(x: Int): String = {
         // A private method can only be called by other members of MyModule
+        // Should always specify return type, even though Scala can usually detect it
         val msg = "The absolute value of %d is %d"
         msg.format(x , abs(x))
     }
