@@ -38,4 +38,11 @@ case class Charge(cc: CreditCard , amount: Double) {
             // A case class can be created w/o the "new" keyword
         else 
             throw new Exception("Can't combine charges to different cards!")
+    
+    def coalesce(charges , List[Charge]): List[Charge] = 
+        charges.groupBy(_.cc).values.map(_.reduce(_ combine _)).toList
+        // _ combine _ and _.cc are anonymous functitons
+        // This function takes a list of charges, groups them by the credit card used, and then 
+        // combines them into a single charge per card.
+
 }
