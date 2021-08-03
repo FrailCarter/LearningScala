@@ -10,11 +10,23 @@ class Cafe {
         // returns a tuple of the cup and a Charge object
         // So now the payments system is not involved here
     }
+
+    def buyCoffees(cc: CreditCard , n: Int): (List[Coffee] , Charge) = {
+        val purchases: List[(Coffee , Charge)] = List.fill(n)(buyCoffee(cc))
+        // List.fill(n)(x) creates a List with n copies of x 
+        val (coffees , charges) = purchases.unzip
+        // unzip splits a listt of pairs into a pair of lists
+        (coffees , charges.reduce((c1 , c2) => c1.combine(c2)))
+        // charges.reduce reduces the entire list of charges to a single charge object, using combine to combine charges 2 at a time
+    }
 }
 
-// We have separated the concern of creating a charge from that of processing a charge, which is 
-// easier to test.
-// Let's go ahead and make our Charge class 
+// This is much better. Now we don't care about the implementation of payments 
+// because that will be taken care of outside of our implementation
+// Additionally, we can reuse and test buyCoffee and buyCoffees quite trivially.
+
+// Since Charge is first-class, we can do something like combining all charges made by a user on the same day into one charge, like a tab!
+// How nice. We'll do that next
 
 case class Charge(cc: CreditCard , amount: Double) {
     // A case class has one primary constructor whose arg list comes after the class name 
