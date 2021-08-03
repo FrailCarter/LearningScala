@@ -4,17 +4,26 @@
 
 class Cafe {
 
-    def buyCoffee(cc: CreditCard , p: Payments): Coffee = {
+    def buyCoffee(cc: CreditCard): (Coffee , Charge) = {
         val cup = new Coffee()
-        p.charge(cc , cup.price)
-        // Payments can be an interface now, so we can write a mock interface for testing
-        cup 
-        // returns cup of coffee
+        (cup , Charge(cc , cup.price())
+        // returns a tuple of the cup and a Charge object
+        // So now the payments system is not involved here
     }
 }
 
-// If we are returning a cup of coffee, then why charge the credit card (let's say it also is contacting the outside world)
-// this introduces things that are hard to test.
+// We have separated the concern of creating a charge from that of processing a charge, which is 
+// easier to test.
+// Let's go ahead and make our Charge class 
 
-// If we want to test that buyCoffee  creates a charge equal to the price of a cup of coffee, this becomes overkill. 
-// Additionally, we can't reuse this easily. If I want to buy 12 coffees, that's 12 separate charges.
+case class Charge(cc: CreditCard , amount: Double) {
+    // A case class has one primary constructor whose arg list comes after the class name 
+    // The params in this list become public, immutable fields of the class and can be accessed using the usual OO dot notation
+    
+    def combine(other: Charge): Charge = 
+        if (cc == other.cc)
+            Charge(cc , amount + other.amount)
+            // A case class can be created w/o the "new" keyword
+        else 
+            throw new Exception("Can't combine charges to different cards!")
+}
