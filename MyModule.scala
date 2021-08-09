@@ -10,7 +10,7 @@
 
 
 object MyModule {
-    // This declares a singleton objectt which simultaneously declares a class and its only instance
+    // This declares a singleton object which simultaneously declares a class and its only instance
     // Objects are also called "Modules"
     def abs(n: Int): Int = 
         // abs takes an integer and returns an integer
