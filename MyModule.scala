@@ -46,8 +46,19 @@ object MyModule {
         msg.format(n , factorial(n))
     }
 
+    def formatResult(name: String , n: Int , f: Int => Int): String = {
+        /* Generalizes formatFactorial and formatAbs
+        This function takes name, n, and a function "f" as arguments
+        */
+        val msg = "The %s of %d is %d"
+        msg.format(name , n , f(n))
+        // "f" takes a type, so f:Int => Int means "f" takes an Integer and returns an Integer
+    }
+
     def main(args: Array[String]): Unit = 
         // Unit serves the same purpose as "void" in Java and C
-        println(formatAbs(-42))
-        println(formatFactorial(7))
+        // println(formatAbs(-42))
+        // println(formatFactorial(7))
+        println(formatResult("absolute value" , -42 , abs))
+        println(formatResult("factorial" , 7 , factorial))
 }
