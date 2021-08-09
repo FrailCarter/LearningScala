@@ -21,6 +21,19 @@ object MyModule {
         else {
             n 
         }
+    
+    def factorial(n: Int): Int = {
+        def go(n: Int , acc: Int): Int = {
+            if (n <= 0) {
+                acc 
+            }
+            else {
+                go(n - 1 , n * acc)
+            }
+        }
+        go(n , 1)
+    }
+
     private def formatAbs(x: Int): String = {
         // A private method can only be called by other members of MyModule
         // Should always specify return type, even though Scala can usually detect it
@@ -28,7 +41,13 @@ object MyModule {
         msg.format(x , abs(x))
     }
 
+    private def formatFactorial (n: Int): Int = {
+        val msg = "The factorial of %d is %d"
+        msg.format(n , factorial(n))
+    }
+
     def main(args: Array[String]): Unit = 
         // Unit serves the same purpose as "void" in Java and C
         println(formatAbs(-42))
+        println(formatFactorial(7))
 }
