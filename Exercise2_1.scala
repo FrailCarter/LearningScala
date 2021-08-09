@@ -13,3 +13,7 @@ def fib(n: Int): Int = {
     go(n , 0 , 1)
 
 }
+
+/*
+If I want to generate the *list* of Fibonacci numbers, this function cannot be used.
+*/
