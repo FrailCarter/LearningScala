@@ -4,6 +4,7 @@ Time to write loops functionally
 */
 
 def factorial(n: Int): Int = {
+    @annotation.tailrec 
     def go(n: Int , acc: Int): Int = {
         // Args of the function are the state of the loop
         if (n <= 0) {
