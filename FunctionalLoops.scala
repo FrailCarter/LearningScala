@@ -14,6 +14,7 @@ def factorial(n: Int): Int = {
             go(n - 1 , n * acc) 
         }
     }
+    go(n , 1)
 }
 
 // The way to write loops functionally w/o a loop variable is via recursion 
