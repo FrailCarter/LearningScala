@@ -5,23 +5,31 @@ Lets make a monomorphic functiion that fiinds the first index in an array where 
 it's not found
 */
 
-def findFirst(ss: Array[String] , key: String): Int = {
+def findFirst[A](as: Array[A] , p: A => Boolean): Int = {
+    // Instead of hardcoding String, take a type A as a parameter
+    // Instead of hardcoding an equality check for a given key, 
+    // take a function with which to test each element of the array
     @annotation.tailrec 
     def loop(n: Int): Int = {
-        if (n >= ss.length) {
-            // If n is past the end of the array, return -1
+        if (n >= as.length) {
             -1
         }
-        else if (ss(n) == key) {
-            // ss(n) extracts the nth element of the array ss 
-            // If the element at n is equal to the key, return n
+        else if (p(as(n)) == key) {
+            // If the fxn p matches the current element, we've found a match and 
+            // return its index in the array
             n 
         }
         else {
             loop(n + 1)
-            // continue
         }
     }
     loop(0)
-    // Start the loop
 }
+
+/* 
+Hmmm, this code will look almost identical if we're searching for a String in an 
+Array[String], and Int in an Array[Int], or an A in an Array[A] for any given type A
+
+We can make this more general for any type A by accepting a function for testing a particular
+A value
+*/
