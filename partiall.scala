@@ -1,8 +1,10 @@
 
 
 def partiall[A , B , C](a: A , f: (A,B) => C): B => C 
-    (b: B) => // ???
+    (b: B) => f(a , b)
     // partiall has to return a function that takes an arg of type B, so we start there
+    // We know that the type C has to come from the function, f. So to get C, we need to pass 
+    // A and B to f
 
 
 // Function takes 3 type parameters: A, B, C
