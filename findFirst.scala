@@ -14,7 +14,7 @@ def findFirst[A](as: Array[A] , p: A => Boolean): Int = {
         if (n >= as.length) {
             -1
         }
-        else if (p(as(n)) == key) {
+        else if (p(as(n))) {
             // If the fxn p matches the current element, we've found a match and 
             // return its index in the array
             n 
@@ -26,10 +26,6 @@ def findFirst[A](as: Array[A] , p: A => Boolean): Int = {
     loop(0)
 }
 
-/* 
-Hmmm, this code will look almost identical if we're searching for a String in an 
-Array[String], and Int in an Array[Int], or an A in an Array[A] for any given type A
-
-We can make this more general for any type A by accepting a function for testing a particular
-A value
-*/
+findFirst[Int](Array[Int](1 , 2 , 3) , (x: Int) => x == 3)
+// The function call for "p" is a lambda function
+// Lambda functions look like (variable: Type) => Transformation Expression
