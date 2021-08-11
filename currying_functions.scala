@@ -93,3 +93,13 @@ add(Array[Int](1 , 2 , 4))
 mult(Array[Int](1 , 2 , 4))
 
 // Even better, now these are *really* starting to look similar
+
+def appFunc[A , B](x: Array[A] , f: (Array[A]) => B): B = {
+    f(x)
+    // Can't be (b: B) => f(b), because we need type A somewhere
+    // f retturns B, so it needs to only be a fxn call 
+}
+appFunc(Array[Int](1 , 2 , 4) , add)
+appFunc(Array[Int](1 , 2 , 4) , mult)
+// **Even better!**
+// However, we can reduce the redundancy of add and mult
