@@ -50,3 +50,17 @@ def appFunc[A , B](a: A , b: A , f: (A , A) => B): B = {
 appFunc(5 , 6 , makeStr)
 appFunc(5 , 6 , mult)
 appFunc(5 , 6 , sum)
+
+// Excellent, now what if sum, mult, and makeStr took any number of args?
+
+def sum(x: Array[Int]): Int = {
+    x.reduce((y, z) => y + z)
+}
+
+def mult(x: Array[Int]): Int = {
+    x.reduce((y , z) => y * z)
+}
+
+sum(Array[Int](1 , 2 , 4))
+mult(Array[Int](1 , 2 , 4))
+// Okay, that's better
