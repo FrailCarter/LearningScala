@@ -110,3 +110,22 @@ def appFunc[A , B](x: Array[A] , f: (Array[A]) => B): B = {
 appFunc(Array[Int](1 , 2 , 4) ,  (x: Array[Int]) => x.reduce((x , y) => x + y))
 appFunc(Array[Int](1 , 2 , 4) ,  (x: Array[Int]) => x.reduce((x , y) => x * y))
 // This removes the need for add and mult by allowing a lambda exp to do the same
+// Let's see if we can generalize add and mult
+
+def someFunc(x: Int , y: Array[Int] , f: (Int , Int) => Int): Int = {
+    def go(n: Int , total: Int): Int = {
+        if (n == y.length) {
+            total 
+        }
+        else {
+            go(n + 1 , f(total , y(n)))
+        }
+    }
+    go(0 , x)
+}
+
+someFunc(0 , Array[Int](1 , 2 , 4) , (x , y) => x + y)
+someFunc(1 , Array[Int](1 , 2 , 4) , (x , y) => x * y)
+
+// Woohoo!!!!
+
