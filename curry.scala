@@ -1,7 +1,7 @@
 
 
 /* This is an example of currying, which converts a function f of 
-2 args into a functtion of one arg that partially applies f
+2 args into a function of one arg that partially applies f
 */
 
 def curry[A , B , C](f: (A , B) => C): A => B => C = 
