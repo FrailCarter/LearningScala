@@ -103,3 +103,10 @@ appFunc(Array[Int](1 , 2 , 4) , add)
 appFunc(Array[Int](1 , 2 , 4) , mult)
 // **Even better!**
 // However, we can reduce the redundancy of add and mult
+
+def appFunc[A , B](x: Array[A] , f: (Array[A]) => B): B = {
+    f(x)
+}
+appFunc(Array[Int](1 , 2 , 4) ,  (x: Array[Int]) => x.reduce((x , y) => x + y))
+appFunc(Array[Int](1 , 2 , 4) ,  (x: Array[Int]) => x.reduce((x , y) => x * y))
+// This removes the need for add and mult by allowing a lambda exp to do the same
