@@ -129,3 +129,19 @@ someFunc(1 , Array[Int](1 , 2 , 4) , (x , y) => x * y)
 
 // Woohoo!!!!
 
+def curry[A , B , C](f: (A , B) => C): A => B => C = {
+    (a: A) => (b: B) => f(a , b)
+}
+
+def add(x: Int , y: Int): Int = {
+    x + y 
+}
+
+val i = curry(add)(1)
+// this returns the add function with arg a 
+i(2)
+// returns 3
+
+
+// Currying takes a fxn of n args and turns it into n functions of 1 arg
+
