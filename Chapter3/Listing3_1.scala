@@ -26,15 +26,18 @@ object List {
         case Cons(x , xs) => x * product(xs)
     }
 
-    def apply[A](as: A*): List[A] = 
+    def apply[A](as: A*): List[A] = {
     // Variadic function syntax
+    // A variadic function takes 0 or more args of type A (think of it like *args)
+    // by calling apply and placing it in the companion obj, we can construct instances of the dtype like
+    // List(1,2,3,4) <-- this is called literal syntax.
         if (as.isEmpty) {
             Nil 
         }
         else {
             Cons(as.head , apply(as.tail: _*))
         }
-    
+    }
 }
 
 /*
