@@ -26,7 +26,7 @@ object List {
         case Cons(x , xs) => x * product(xs)
     }
 
-    def apply[A](as: A*): List[A] = {
+    def apply[A](as: A*): List[A] = 
     // Variadic function syntax
         if (as.isEmpty) {
             Nil 
@@ -34,7 +34,7 @@ object List {
         else {
             Cons(as.head , apply(as.tail: _*))
         }
-    }
+    
 }
 
 /*
@@ -47,6 +47,6 @@ There are 2 such implementations, or data constructors, of List (each introduced
 A list can be empty, or a list can be nonempty.
 */
 
-val ex1: List[Double] = Nil
-val ex2: List[Int] = Cons(1 , Nil)
-val ex3: List[String] = Cons("a" , Cons("b" , Nil))
+// val ex1: List[Double] = Nil
+// val ex2: List[Int] = Cons(1 , Nil)
+// val ex3: List[String] = Cons("a" , Cons("b" , Nil))
