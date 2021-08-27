@@ -22,3 +22,8 @@ def dropWhile[A](as: List[A])(f: A=> Boolean): List[A] = as match {
 
 val xs: List[Int] = List(1,2,3,4,5)
 val ex1 = dropWhile(xs)(x => x < 4)
+
+/*
+When a fxn definition contains multiiple arg goups, type information flows from left wo right across those arg groups.
+So the first group fixes the type parameter A of dropWhile to Int, so the annotation on x => x < 4 is not required.
+*/
