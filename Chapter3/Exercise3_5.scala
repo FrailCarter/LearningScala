@@ -53,3 +53,5 @@ val x: List[Int] = List(1,2,3,4)
 val y: Boolean = List.dropWhile(x , (y: Int) => if (y == 2) {true} else {false}) == List(1 , 3 , 4)
 val a: Boolean = List.dropWhile(x , f) == x
 val b: Boolean = List.dropWhile(List() , f) == Nil
+val c: List[Int] = List(1,1,1,1,1,1,1,1,2,3,1,1,1,4,5,1)
+val d: Boolean = List.dropWhile(c , (y: Int) => if (y == 1) {true} else {false}) == List(2,3,4,5)
