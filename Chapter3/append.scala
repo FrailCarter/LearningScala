@@ -55,3 +55,5 @@ object List {
 val x: List[Int] = List(1,2,3)
 val y: List[Int] = List(4,5,6)
 val z: Boolean = List.append(x , y) == List(1,2,3,4,5,6)
+val a: Boolean = List.append(x , List()) == x
+val b: Boolean = List.append(List() , List()) == Nil
