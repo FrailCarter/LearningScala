@@ -58,10 +58,13 @@ object List {
     }
 
     def product(ns: List[Double]) = {
-        foldRight(ns , 1)(_ * _)
+        foldRight(ns , 1.0)((x , y) => x * y)
         // _ * _ is more concise notation for (x , y) => x * y
         // This will not halt when it hits a 0 because there is not a case for it in foldRight.
     }
 }
 
+
+
 val x: List[Int] = List.foldRight(List(1,2,3) , Nil: List[Int])(Cons(_ , _))
+

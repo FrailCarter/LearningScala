@@ -58,7 +58,7 @@ object List {
     }
 
     def product(ns: List[Double]) = {
-        foldRight(ns , 1)(_ * _)
+        foldRight(ns , 1.0)(_ * _)
         // _ * _ is more concise notation for (x , y) => x * y
         // This will not halt when it hits a 0 because there is not a case for it in foldRight.
     }
