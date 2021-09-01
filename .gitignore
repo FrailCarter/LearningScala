@@ -3,7 +3,7 @@
 .bsp
 
 # metals
-project/metals.sbt
+metals.sbt
 .metals
 
 # vs code
@@ -13,8 +13,6 @@ project/metals.sbt
 .tasty
 
 # sbt
-project/project/
-project/target/
 target/
 
 # eclipse
